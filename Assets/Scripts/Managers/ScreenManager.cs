@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +10,7 @@ public class ScreenManager : Singleton<ScreenManager>
         GAME_SCREEN = 1,
         LEVEL_COMPLETE_SCREEN = 2,
         LEVEL_FAILED_SCREEN = 3,
+        SHOP_SCREEN = 4,
     }
     
     [Header("Screens")] 
@@ -18,7 +18,8 @@ public class ScreenManager : Singleton<ScreenManager>
     [SerializeField] private GameObject m_gameScreen;
     [SerializeField] private GameObject m_levelCompleteScreen;
     [SerializeField] private GameObject m_levelFailedScreen;
-
+    [SerializeField] private GameObject m_shopScreen;
+    
     [Header("Canvas")]
     [SerializeField] private Canvas m_mainCanvas;
 
@@ -32,6 +33,7 @@ public class ScreenManager : Singleton<ScreenManager>
         m_screens.Add(m_gameScreen);
         m_screens.Add(m_levelCompleteScreen);
         m_screens.Add(m_levelFailedScreen);
+        m_screens.Add(m_shopScreen);
     }
 
     public void GoToScreen(Screen screen)
