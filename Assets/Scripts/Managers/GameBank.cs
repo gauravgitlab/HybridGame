@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 public static class GameBank 
 {
@@ -21,11 +19,11 @@ public static class GameBank
         }
     }
     
-    public static void AddCurrency(string currencyId, int ammount)
+    public static void AddCurrency(string currencyId, int amount)
     {
         if (m_bank.ContainsKey(currencyId))
         {
-            m_bank[currencyId] += ammount;
+            m_bank[currencyId] += amount;
             GameplayEvents.SendCurrencyChanged(currencyId, m_bank[currencyId]);
         }
         else
@@ -57,17 +55,31 @@ public static class GameBank
         return 0;
     }
     
-    public static bool CanAfford(string currencyId, int ammount)
+    public static bool CanAfford(string currencyId, int amount)
     {
-        //TODO: please, fill me
-        return true;
+        if (m_bank.ContainsKey(currencyId))
+        {
+            return m_bank[currencyId] >= amount;
+        }
+
+        Debug.LogError($"Currency Id {currencyId} has not been registered");
+        return false;
     }
     
-    public static bool Purchase(string currencyId, int ammount)
+    public static bool Purchase(string currencyId, int amount)
     {
-        //TODO, please fill me
-        GameplayEvents.SendCurrencyChanged(currencyId, m_bank[currencyId]);
-        return true;
+        if (m_bank.ContainsKey(currencyId))
+        {
+            if (!CanAfford(currencyId, amount))
+                return false;
+            
+            m_bank[currencyId] -= amount;
+            GameplayEvents.SendCurrencyChanged(currencyId, m_bank[currencyId]);
+            return true;
+        }
+
+        Debug.LogError($"Currency Id {currencyId} has not been registered");
+        return false;
     }
     
 }
