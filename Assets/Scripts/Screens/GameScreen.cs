@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class GameScreen : MonoBehaviour
 {
-    private const string ENEMY_COUNT = "Enemies Remaining: {0}";
+    private const string ENEMY_COUNT = "x {0}";
     
     [SerializeField] private Text m_enemyCount;
 
@@ -11,7 +11,8 @@ public class GameScreen : MonoBehaviour
     {
         GameplayEvents.EnemyCountUpdated += GameplayEventsOnEnemyCountUpdated;
     }
-    void Start()
+
+    private void Start()
     {
         m_enemyCount.text = string.Format(ENEMY_COUNT, EnemyManager.Instance.GetEnemyCount());
     }

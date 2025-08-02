@@ -33,11 +33,4 @@ public class CosmeticManager : Singleton<CosmeticManager>
         return m_cosmeticCategorizedItems.TryGetValue(category, out var categorizedItems) ? 
             categorizedItems : new List<CosmeticItemScriptable>();
     }
-    
-    public CosmeticItemScriptable GetEquippedItem(CosmeticCategory category)
-    {
-        //var id = PlayerDataManager.Instance.GetEquipped(category);
-        //return categorizedItems[category].FirstOrDefault(i => i.id == id);
-        return null;
-    }
 }
