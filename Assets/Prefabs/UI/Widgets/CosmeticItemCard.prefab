@@ -417,11 +417,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: dc9fbf862af324917941c7f0a2071b26, type: 3}
-    m_FontSize: 80
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 8
-    m_MaxSize: 80
+    m_MinSize: 5
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -524,6 +524,7 @@ MonoBehaviour:
   m_statusText: {fileID: 0}
   m_cost: {fileID: 0}
   m_equipButton: {fileID: 0}
+  m_cosmeticId: 
 --- !u!1 &6315320844444905142
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,8 +828,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: adea8221ccac74526b6b30d8cb62b833, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 0b0743cffa5954eaf8a73468846733b1, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -856,6 +857,7 @@ MonoBehaviour:
   m_statusText: {fileID: 2717309584924980383}
   m_cost: {fileID: 6310707074732430646}
   m_equipButton: {fileID: 5517477353134822348}
+  m_cosmeticId: 
 --- !u!1 &8319289780527092540
 GameObject:
   m_ObjectHideFlags: 0

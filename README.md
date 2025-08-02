@@ -14,7 +14,8 @@ Task 1 : New Mechanic, Shop
 
 Task 2 : Improvement
 =====================================================================================================================================================================
-
+- Animating Pop up Appearing
+Currently we are using the code to animate the pop up, we can also use Animation for that.
 
 Task 3 : Bugs
 =====================================================================================================================================================================
@@ -23,3 +24,9 @@ Task 3 : Bugs
 
 - Bug 2
 - Status - Fixed, we are resetting the player level to 0 again, after completing all the levels, it will remove the soft lock and player keep continue playing the game.
+
+
+
+Suggesion to Improve Game
+=====================================================================================================================================================================
+- 
