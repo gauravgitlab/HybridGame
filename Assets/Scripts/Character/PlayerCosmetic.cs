@@ -27,7 +27,7 @@ public class PlayerCosmetic : MonoBehaviour
     {
         foreach (var cosmetic in m_cosmetics)
         {
-            if (!string.IsNullOrEmpty(cosmeticId) && cosmetic.name == cosmeticId)
+            if (!string.IsNullOrEmpty(cosmeticId) && CustomUtils.CompareIDs(cosmetic.name, cosmeticId))
             {
                 cosmetic.SetActive(true);
             }

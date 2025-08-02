@@ -31,4 +31,9 @@ public class CosmeticItemCost : MonoBehaviour
             m_costText.color = m_costUnaffordableColor;
         }
     }
+    
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
 }

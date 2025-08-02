@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37aa624a86f0244478f2dad809afe182, type: 3}
   m_Name: Horsehead
   m_EditorClassIdentifier: 
-  m_id: Horsehead
+  m_id: horsehead
   m_displayName: Horse Head
   m_cosmeticCategory: 0
   m_cost: 50
