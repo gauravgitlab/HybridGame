@@ -137,7 +137,7 @@ public class ShopScreen : MonoBehaviour
         if (!string.IsNullOrEmpty(lastEquippedCosmeticId))
         {
             CosmeticItemCard lastEquippedItemCard = m_categoryItemsContainers[category].m_cosmeticItemCards
-                .FirstOrDefault(card => card.m_cosmeticId == lastEquippedCosmeticId);
+                .FirstOrDefault(card => CustomUtils.CompareIDs(card.m_cosmeticId, lastEquippedCosmeticId));
             if(lastEquippedItemCard != null)
             {
                 lastEquippedItemCard.OnCosmeticUnEquip();
@@ -146,7 +146,7 @@ public class ShopScreen : MonoBehaviour
         
         // equip the new cosmetic item
         CosmeticItemCard newEquippedItemCard = m_categoryItemsContainers[category].m_cosmeticItemCards
-            .FirstOrDefault(card => card.m_cosmeticId == cosmeticItemId);
+            .FirstOrDefault(card => CustomUtils.CompareIDs(card.m_cosmeticId, cosmeticItemId));
         if (newEquippedItemCard != null)
         {
             newEquippedItemCard.OnCosmeticEquip();

@@ -38,6 +38,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] private Rigidbody m_mainRB;
     [SerializeField] private Rigidbody[] m_ragDollRbs;
     [SerializeField] private WeaponDropScriptable m_weaponDropScriptable;
+    [SerializeField] private EnemyTypeScriptable m_enemyTypeScriptable;
 
     private void Awake()
     {
@@ -87,5 +88,12 @@ public class EnemyController : MonoBehaviour, IDamageable
     public void Config(WeaponDropScriptable weaponDropScriptable)
     {
         m_weaponDropScriptable = weaponDropScriptable;
+    }
+    
+    public void SetEnemyTypeConfig(EnemyTypeScriptable enemyTypeScriptable)
+    {
+        m_enemyTypeScriptable = enemyTypeScriptable;
+        m_health = m_enemyTypeScriptable.m_health;
+        transform.localScale = m_enemyTypeScriptable.m_scale;
     }
 }

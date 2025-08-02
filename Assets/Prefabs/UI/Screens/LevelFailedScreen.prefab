@@ -468,6 +468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4764743142890872957}
   - component: {fileID: 3632468838424396964}
+  - component: {fileID: -6689889946724982695}
   m_Layer: 5
   m_Name: LevelFailedScreen
   m_TagString: Untagged
@@ -509,6 +510,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac97dd3c20d134d1cb48f0869db815b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6689889946724982695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764743142890872956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c1093181433234f926ea3702470fb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_duration: 0.22
 --- !u!1 &4965304308230579709
 GameObject:
   m_ObjectHideFlags: 0

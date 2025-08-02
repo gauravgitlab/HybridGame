@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PopupAnimator : MonoBehaviour
+public class ScreenAnimator : MonoBehaviour
 {
     [SerializeField] private float m_duration = 0.2f;
 

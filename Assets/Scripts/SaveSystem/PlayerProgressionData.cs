@@ -106,7 +106,8 @@ public class PlayerProgressionData : SaveDataBase, ICustomSerializable
     
     public bool IsCosmeticEquipped(CosmeticCategory category, string cosmeticId)
     {
-        return m_equippedCosmetics.ContainsKey(category) && m_equippedCosmetics[category] == cosmeticId;
+        return m_equippedCosmetics.ContainsKey(category) &&
+               CustomUtils.CompareIDs(m_equippedCosmetics[category], cosmeticId);
     }
     
     public string GetCurrentEquippedCosmetic(CosmeticCategory category)

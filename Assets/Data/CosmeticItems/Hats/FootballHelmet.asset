@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37aa624a86f0244478f2dad809afe182, type: 3}
   m_Name: FootballHelmet
   m_EditorClassIdentifier: 
-  m_id: FootballHelmet
+  m_id: footballhelmet
   m_displayName: Football Helmet
   m_cosmeticCategory: 0
   m_cost: 40

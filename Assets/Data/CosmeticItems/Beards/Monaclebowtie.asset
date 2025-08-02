@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37aa624a86f0244478f2dad809afe182, type: 3}
   m_Name: Monaclebowtie
   m_EditorClassIdentifier: 
-  m_id: Monaclebowtie
+  m_id: monaclebowtie
   m_displayName: Monacle Bowtie
   m_cosmeticCategory: 1
   m_cost: 25

@@ -3,11 +3,27 @@ using UnityEngine;
 
 public class PlayerCosmeticHandler : MonoBehaviour
 {
-    [SerializeField] private List<PlayerCosmetic> m_playerCosmetics = new();
+    [SerializeField] private List<CharacterCosmetic> m_playerCosmetics = new();
     
     private void Awake()
     {
         ShopEvents.CosmeticEquipped += OnCosmeticEquipped;
+    }
+    
+    private void Start()
+    {
+        foreach(var characterCosmetic in m_playerCosmetics)
+        {
+            if (characterCosmetic == null)
+            {
+                Debug.LogWarning("CharacterCosmetic is null in PlayerCosmeticHandler.");
+                continue;
+            }
+            
+            var equippedCosmeticId = GameManager.Instance.m_playerProgressionData.
+                GetCurrentEquippedCosmetic(characterCosmetic.m_cosmeticCategory);
+            characterCosmetic.EnableCosmetic(equippedCosmeticId);
+        }
     }
 
     private void OnDestroy()

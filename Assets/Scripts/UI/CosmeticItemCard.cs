@@ -61,7 +61,7 @@ public class CosmeticItemCard : MonoBehaviour
         var alreadyEquippedCosmeticId = GameManager.Instance.m_playerProgressionData.GetCurrentEquippedCosmetic(m_cosmeticCategory);
         if (!string.IsNullOrEmpty(alreadyEquippedCosmeticId))
         {
-            if(alreadyEquippedCosmeticId == m_cosmeticId)
+            if(CustomUtils.CompareIDs(alreadyEquippedCosmeticId, m_cosmeticId))
             {
                 // Already equipped, do nothing
                 return;
@@ -78,6 +78,12 @@ public class CosmeticItemCard : MonoBehaviour
         bool isCosmeticEquipped = IsCosmeticEquipped();
         bool isAffordable = IsAffordable();
         
+        // Reset common UI state
+        m_equippedGameObject.SetActive(false);
+        m_statusText.text = "";
+        m_equipButton.gameObject.SetActive(false);
+        m_cost.Hide();
+        
         if (isCosmeticPurchased)
         {
             if (isCosmeticEquipped)
@@ -88,21 +94,10 @@ public class CosmeticItemCard : MonoBehaviour
             {
                 OnCosmeticUnEquip();
             }
-            m_cost.gameObject.SetActive(false);
-        }
-        else if(isAffordable)
-        {
-            m_equippedGameObject.SetActive(false);
-            m_statusText.text = "";
-            m_equipButton.gameObject.SetActive(false);
-            m_cost.RefreshUI(true);
         }
         else
         {
-            m_equippedGameObject.SetActive(false);
-            m_statusText.text = "";
-            m_equipButton.gameObject.SetActive(false);
-            m_cost.RefreshUI(false);
+            m_cost.RefreshUI(isAffordable);
         }
     }
     
