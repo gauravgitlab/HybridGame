@@ -6,7 +6,8 @@ public class FinishAreaHitBox : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(TagsAndLayers.Tag.PLAYER))
+        if (other.CompareTag(TagsAndLayers.Tag.PLAYER) &&
+            EnemyManager.Instance.GetEnemyCount() <= 0)
         {
             if (other.TryGetComponent(out PlayerController controller))
             {

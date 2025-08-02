@@ -10,6 +10,12 @@ public class EnemySpawn : MonoBehaviour
         EnemyController enemy = Instantiate(m_enemy, transform);
         EnemyManager.Instance.RegisterEnemy(enemy);
         
+        EnemyTypeScriptable enemyType = EnemyTypeManager.Instance.GetRandomEnemyType();
+        if (enemyType != null)
+        {
+            enemy.SetEnemyTypeConfig(enemyType);
+        }
+        
         if (m_weaponDropScriptable)
         {
             enemy.Config(m_weaponDropScriptable);

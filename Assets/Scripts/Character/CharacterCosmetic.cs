@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCosmetic : MonoBehaviour
+public class CharacterCosmetic : MonoBehaviour
 {
     public CosmeticCategory m_cosmeticCategory;
     private List<GameObject> m_cosmetics = new();
@@ -13,14 +13,6 @@ public class PlayerCosmetic : MonoBehaviour
         {
             m_cosmetics.Add(child.gameObject);
         }
-    }
-
-    private void Start()
-    {
-        var equippedCosmeticId = GameManager.Instance.m_playerProgressionData.
-            GetCurrentEquippedCosmetic(m_cosmeticCategory);
-        
-        EnableCosmetic(equippedCosmeticId);
     }
 
     public void EnableCosmetic(string cosmeticId)
@@ -36,5 +28,25 @@ public class PlayerCosmetic : MonoBehaviour
                 cosmetic.SetActive(false);
             }
         }
+    }
+
+    public void SetRandomCosmetic()
+    {
+        var cosmeticId = GetRandomCosmeticId();
+        if (string.IsNullOrEmpty(cosmeticId))
+            return;
+        
+        EnableCosmetic(cosmeticId);
+    }
+    
+    private string GetRandomCosmeticId()
+    {
+        if (m_cosmetics == null || m_cosmetics.Count == 0)
+        {
+            return null;
+        }
+
+        int randomIndex = Random.Range(0, m_cosmetics.Count);
+        return m_cosmetics[randomIndex].name;
     }
 }

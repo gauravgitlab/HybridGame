@@ -175,7 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2737984732250173371}
   - component: {fileID: 1936158373863337468}
-  - component: {fileID: 8039281669658372376}
+  - component: {fileID: 8870971703222270528}
   m_Layer: 5
   m_Name: ShopScreen
   m_TagString: Untagged
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_cosmeticItemScrollViewPrefab: {fileID: 4134471844102221172, guid: bac153d8ceddb2d469f74871246103ad, type: 3}
   m_categoryItemPrefab: {fileID: 8044606109730870527, guid: 7feab99c24afa024b963f7c68d64e02a, type: 3}
   m_categoryItemsTransform: {fileID: 4853508021641334672}
---- !u!114 &8039281669658372376
+--- !u!114 &8870971703222270528
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c1093181433234f926ea3702470fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_duration: 0.2
+  m_duration: 0.22
 --- !u!1 &3123176590624710219
 GameObject:
   m_ObjectHideFlags: 0

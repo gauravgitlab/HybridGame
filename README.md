@@ -14,8 +14,12 @@ Task 1 : New Mechanic, Shop
 
 Task 2 : Improvement
 =====================================================================================================================================================================
-- Animating Pop up Appearing
-Currently we are using the code to animate the pop up, we can also use Animation for that.
+- Animating Screens (GameScreen, ShopScreen, StartScreen, LevelFailedScreen and LevelCompleteScreen) when Appearing, Currently we are using the code to animate the screen, we can also use Animation for that.
+- Adding the EnemyType config to assign for spawing enemy with different health and scale, we can add more enemy type using scriptable object
+- Assign random Hats and Beards on spawing enemy, (we can also make cosmetic as part of config, but after completely all levels, the level restarts to 0, so random will gives new vibe in the same level.)
+- assignn random skycolor on level load
+- UI Screen (GameScreen, ShopScreen, StartScreen, LevelFailedScreen and LevelCompleteScreen) alignment and polishing
+
 
 Task 3 : Bugs
 =====================================================================================================================================================================
@@ -24,9 +28,3 @@ Task 3 : Bugs
 
 - Bug 2
 - Status - Fixed, we are resetting the player level to 0 again, after completing all the levels, it will remove the soft lock and player keep continue playing the game.
-
-
-
-Suggesion to Improve Game
-=====================================================================================================================================================================
-- 
