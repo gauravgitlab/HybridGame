@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37aa624a86f0244478f2dad809afe182, type: 3}
   m_Name: Evilmustache
   m_EditorClassIdentifier: 
-  m_id: evilmustache
+  m_cosmeticId: evilmustache
   m_displayName: Evil Mustache
-  m_cosmeticCategory: 1
+  m_cosmeticCategory: beards
   m_cost: 10
   m_icon: {fileID: 21300000, guid: a1119bcc28eb340dd95d227eb2c70a5b, type: 3}

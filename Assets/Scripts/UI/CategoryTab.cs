@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class CategoryTab : MonoBehaviour
@@ -7,15 +8,15 @@ public class CategoryTab : MonoBehaviour
     [SerializeField] private Text m_tabText;
     [SerializeField] private Button m_tabButton;
 
-    public CosmeticCategory m_category;
+    [FormerlySerializedAs("m_category")] public string m_cosmeticCategory;
     
-    public void SetTab(CosmeticCategory category, UnityAction<CosmeticCategory> onClickCallback)
+    public void SetTab(string cosmeticCategory, UnityAction<string> onClickCallback)
     {
-        m_category = category;
-        name = $"{category}_Tab";
-        m_tabText.text = category.ToString();
+        m_cosmeticCategory = cosmeticCategory;
+        name = $"{cosmeticCategory}_Tab";
+        m_tabText.text = cosmeticCategory;
         m_tabButton.onClick.RemoveAllListeners();
-        m_tabButton.onClick.AddListener(() => onClickCallback(category));
+        m_tabButton.onClick.AddListener(() => onClickCallback(cosmeticCategory));
         gameObject.SetActive(true);
     }
 

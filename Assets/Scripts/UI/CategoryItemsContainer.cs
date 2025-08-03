@@ -4,9 +4,9 @@ public class CategoryItemsContainer : MonoBehaviour
 {
     public Transform m_content;
 
-    public void SetContainer(CosmeticCategory category)
+    public void SetContainer(string cosmeticCategory)
     {
-        name = $"{category}_Items";
+        name = $"{cosmeticCategory}_Items";
         gameObject.SetActive(false);
     }
 }

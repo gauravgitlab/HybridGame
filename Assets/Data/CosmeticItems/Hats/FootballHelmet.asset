@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37aa624a86f0244478f2dad809afe182, type: 3}
   m_Name: FootballHelmet
   m_EditorClassIdentifier: 
-  m_id: footballhelmet
+  m_cosmeticId: footballhelmet
   m_displayName: Football Helmet
-  m_cosmeticCategory: 0
+  m_cosmeticCategory: hats
   m_cost: 40
   m_icon: {fileID: 21300000, guid: d42b7b9a75d804472b27dd68aaa4c527, type: 3}

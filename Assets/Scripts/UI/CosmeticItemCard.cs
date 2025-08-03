@@ -12,18 +12,18 @@ public class CosmeticItemCard : MonoBehaviour
     [SerializeField] private Button m_equipButton;
 
     private int m_cosmeticCost = 0;
-    private CosmeticCategory m_cosmeticCategory;
+    private string m_cosmeticCategory;
     
     public string m_cosmeticId;
     
     public void SetItemCard(CosmeticItemScriptable cosmeticItem)
     {
-        name = cosmeticItem.m_id;
+        name = cosmeticItem.m_cosmeticId;
         m_nameText.text = cosmeticItem.m_displayName;
         m_cosmeticImage.sprite = cosmeticItem.m_icon;
         
         m_cosmeticCategory = cosmeticItem.m_cosmeticCategory;
-        m_cosmeticId = cosmeticItem.m_id;
+        m_cosmeticId = cosmeticItem.m_cosmeticId;
         m_cosmeticCost = cosmeticItem.m_cost;
         
         m_cost.SetCost(m_cosmeticCost, BuyCosmeticItem);

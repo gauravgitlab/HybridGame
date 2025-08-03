@@ -6,9 +6,9 @@ public class CosmeticManager : Singleton<CosmeticManager>
     [SerializeField]
     private CosmeticDatabaseScriptable m_cosmeticDatabase;
     
-    private Dictionary<CosmeticCategory, List<CosmeticItemScriptable>> m_cosmeticCategorizedItems;
+    private Dictionary<string, List<CosmeticItemScriptable>> m_cosmeticCategorizedItems;
     
-    public IReadOnlyDictionary<CosmeticCategory, List<CosmeticItemScriptable>> CosmeticCategorizedItems => m_cosmeticCategorizedItems;
+    public IReadOnlyDictionary<string, List<CosmeticItemScriptable>> CosmeticCategorizedItems => m_cosmeticCategorizedItems;
 
     private void Awake()
     {
@@ -17,7 +17,7 @@ public class CosmeticManager : Singleton<CosmeticManager>
 
     private void LoadAndGroupCosmeticItems()
     {
-        m_cosmeticCategorizedItems = new Dictionary<CosmeticCategory, List<CosmeticItemScriptable>>();
+        m_cosmeticCategorizedItems = new Dictionary<string, List<CosmeticItemScriptable>>();
 
         foreach (var item in m_cosmeticDatabase.m_cosmeticItems)
         {
@@ -28,9 +28,9 @@ public class CosmeticManager : Singleton<CosmeticManager>
         }
     }
     
-    public List<CosmeticItemScriptable> GetItemsByCategory(CosmeticCategory category)
+    public List<CosmeticItemScriptable> GetItemsByCategory(string cosmeticCategory)
     {
-        return m_cosmeticCategorizedItems.TryGetValue(category, out var categorizedItems) ? 
+        return m_cosmeticCategorizedItems.TryGetValue(cosmeticCategory, out var categorizedItems) ? 
             categorizedItems : new List<CosmeticItemScriptable>();
     }
 }

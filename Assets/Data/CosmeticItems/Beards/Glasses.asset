@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37aa624a86f0244478f2dad809afe182, type: 3}
   m_Name: Glasses
   m_EditorClassIdentifier: 
-  m_id: glasses
+  m_cosmeticId: glasses
   m_displayName: Glasses
-  m_cosmeticCategory: 1
+  m_cosmeticCategory: beards
   m_cost: 20
   m_icon: {fileID: 21300000, guid: 12aa6675b39c04d688f072e9b1cc6022, type: 3}

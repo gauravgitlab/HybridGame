@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CharacterCosmetic : MonoBehaviour
 {
-    public CosmeticCategory m_cosmeticCategory;
+    public string m_cosmeticCategory;
     private List<GameObject> m_cosmetics = new();
 
     private void Awake()

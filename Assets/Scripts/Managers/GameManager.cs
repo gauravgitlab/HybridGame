@@ -93,14 +93,14 @@ public class GameManager : Singleton<GameManager>
         return m_playerObject;
     }
 
-    public void OnPurchaseCosmeticItem(CosmeticCategory category, string cosmeticItemId)
+    public void OnPurchaseCosmeticItem(string cosmeticCategory, string cosmeticId)
     {
         m_playerProgressionData = SaveSystem.Load<PlayerProgressionData>(PLAYER_PROGRESSION_DATA);
-        m_playerProgressionData.AddPurchasedCosmetic(category, cosmeticItemId);
+        m_playerProgressionData.AddPurchasedCosmetic(cosmeticCategory, cosmeticId);
         SaveSystem.Save(m_playerProgressionData, PLAYER_PROGRESSION_DATA);
     }
     
-    public void OnEquipCosmeticItem(CosmeticCategory cosmeticCategory, string cosmeticId)
+    public void OnEquipCosmeticItem(string cosmeticCategory, string cosmeticId)
     {
         m_playerProgressionData = SaveSystem.Load<PlayerProgressionData>(PLAYER_PROGRESSION_DATA);
         m_playerProgressionData.EquipCosmetic(cosmeticCategory, cosmeticId);

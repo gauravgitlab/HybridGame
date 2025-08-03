@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37aa624a86f0244478f2dad809afe182, type: 3}
   m_Name: Hornedhelm
   m_EditorClassIdentifier: 
-  m_id: hornedhelm
+  m_cosmeticId: hornedhelm
   m_displayName: Horned Helm
-  m_cosmeticCategory: 0
+  m_cosmeticCategory: hats
   m_cost: 50
   m_icon: {fileID: 21300000, guid: 570ab78717a36446a9e85d8865953315, type: 3}

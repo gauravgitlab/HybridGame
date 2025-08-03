@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class ShopEvents : MonoBehaviour
 {
-    public static event Action<CosmeticCategory, string> CosmeticPurchased;
-    public static void SendCosmeticPurchased(CosmeticCategory category, string cosmeticId)
+    public static event Action<string, string> CosmeticPurchased;
+    public static void SendCosmeticPurchased(string cosmeticCategory, string cosmeticId)
     {
-        CosmeticPurchased?.Invoke(category, cosmeticId);
+        CosmeticPurchased?.Invoke(cosmeticCategory, cosmeticId);
     }
 
-    public static event Action<CosmeticCategory, string, string> CosmeticEquipped;
-    public static void SendCosmeticEquipped(CosmeticCategory cosmeticCategory, string lastEquippedCosmeticId, string cosmeticId)
+    public static event Action<string, string, string> CosmeticEquipped;
+    public static void SendCosmeticEquipped(string cosmeticCategory, string lastEquippedCosmeticId, string cosmeticId)
     {
         CosmeticEquipped?.Invoke(cosmeticCategory, lastEquippedCosmeticId, cosmeticId);
     }
