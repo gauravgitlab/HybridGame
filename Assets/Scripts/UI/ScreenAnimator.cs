@@ -5,12 +5,18 @@ public class ScreenAnimator : MonoBehaviour
 {
     [SerializeField] private float m_duration = 0.2f;
 
-    private void Start()
+    private void OnEnable()
     {
-        StartCoroutine(AnimatePopup());
+        StartCoroutine(AnimateScreen());
+    }
+    
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        transform.localScale = Vector3.one;
     }
 
-    private IEnumerator AnimatePopup()
+    private IEnumerator AnimateScreen()
     {
         Vector3 start = Vector3.zero;
         Vector3 end = Vector3.one;

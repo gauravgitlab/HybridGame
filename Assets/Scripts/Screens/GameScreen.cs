@@ -33,16 +33,9 @@ public class GameScreen : MonoBehaviour
     
     private void GameplayEventsOnEnemyCountUpdated(int count)
     {
-        if (count <= 0)
-        {
-            m_tickGameObject.SetActive(true);
-            m_enemyCount.gameObject.SetActive(false);
-        }
-        else
-        {
-            m_tickGameObject.SetActive(false);
-            m_enemyCount.gameObject.SetActive(true);
-            m_enemyCount.text = string.Format(ENEMY_COUNT, count);    
-        }
+        m_enemyCount.text = string.Format(ENEMY_COUNT, count);
+        bool isAllEnemiesDead = count <= 0;
+        m_tickGameObject.SetActive(isAllEnemiesDead);
+        m_enemyCount.gameObject.SetActive(!isAllEnemiesDead);
     }
 }
