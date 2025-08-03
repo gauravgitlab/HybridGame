@@ -172,6 +172,7 @@ MonoBehaviour:
   m_deadZone: 0.05
   m_factor: 1
   m_canvas: {fileID: 0}
+  m_maxVisualOffsetMultiplier: 2
 --- !u!136 &6108674171450914346
 CapsuleCollider:
   m_ObjectHideFlags: 0
