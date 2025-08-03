@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37aa624a86f0244478f2dad809afe182, type: 3}
   m_Name: Headphones
   m_EditorClassIdentifier: 
-  m_id: headphones
+  m_cosmeticId: headphones
   m_displayName: Headphones
-  m_cosmeticCategory: 0
+  m_cosmeticCategory: hats
   m_cost: 50
   m_icon: {fileID: 21300000, guid: 7bba3134826c141f3a61a7d99b3aa588, type: 3}

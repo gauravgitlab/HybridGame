@@ -13,7 +13,8 @@ public class VirtualJoystick : MonoBehaviour
     [SerializeField] private float m_deadZone = 0.05f;
     [SerializeField] private float m_factor = 1f;
     [SerializeField] private Canvas m_canvas;
-
+    [SerializeField] private float m_maxVisualOffsetMultiplier = 1.5f;
+    
     private IJoyControllable m_controllable;
     private GameObject m_uiVisuals;
 
@@ -22,6 +23,8 @@ public class VirtualJoystick : MonoBehaviour
     private bool m_moving;
 
     private bool m_useFixedUpdate;
+    
+    private RectTransform m_joystickHandle;
 
     public void RegisterControllable(IJoyControllable controllable, bool useFixedUpdate = false)
     {
@@ -29,14 +32,18 @@ public class VirtualJoystick : MonoBehaviour
         m_useFixedUpdate = useFixedUpdate;
     }
 
-    public void DeregisterControllble()
+    public void DeregisterControllable()
     {
         m_controllable = null;
     }
 
-    public void RegisterUIVisuals(GameObject uiVIsual)
+    public void RegisterUIVisuals(GameObject uiVisual)
     {
-        m_uiVisuals = uiVIsual;
+        if (uiVisual == null)
+            return;
+        
+        m_uiVisuals = uiVisual;
+        m_joystickHandle = m_uiVisuals.transform.Find("Handle").GetComponent<RectTransform>();
     }
 
     // Use this when you when you are blocked in one direction but don't want to move
@@ -146,18 +153,25 @@ public class VirtualJoystick : MonoBehaviour
             {
                 m_moving = true;
             }
+            
             if (m_moving)
             {
-                if (magnitude > m_followDistance)
-                {
-                    Vector3 normalizedOffset = offset.normalized;
-                    offset = normalizedOffset * m_followDistance;
-                    m_initialMousePress = Input.mousePosition - (normalizedOffset * m_followDistance * Screen.width);
-                    UIVisualSet();
-                }
-
-                Vector3 factorizedOffset = offset * m_factor;
-                m_controllable.ControlChanged(new Vector2(factorizedOffset.x, factorizedOffset.y));
+                Vector2 cappedInput = Vector2.ClampMagnitude
+                    (new Vector2(offset.x, offset.y), m_followDistance) * m_factor;
+                m_controllable.ControlChanged(cappedInput);
+                
+                // if (magnitude > m_followDistance)
+                // {
+                //     Vector3 normalizedOffset = offset.normalized;
+                //     offset = normalizedOffset * m_followDistance;
+                //     m_initialMousePress = Input.mousePosition - 
+                //                           (normalizedOffset * m_followDistance * Screen.width);
+                // }
+                //
+                // Vector3 factorizedOffset = offset * m_factor;
+                // m_controllable.ControlChanged(new Vector2(factorizedOffset.x, factorizedOffset.y));
+                
+                UIVisualSet();
             }
         }
     }
@@ -166,7 +180,21 @@ public class VirtualJoystick : MonoBehaviour
     {
         if (m_uiVisuals != null)
         {
-            m_uiVisuals.SetActive(true);
+            //m_uiVisuals.SetActive(true);
+            
+            Vector2 localPoint;
+            RectTransform parentRect = m_uiVisuals.GetComponent<RectTransform>();
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRect, Input.mousePosition,
+                null, out localPoint);
+
+            Vector2 joystickCenter = parentRect.rect.center;
+            Vector2 offset = localPoint - joystickCenter;
+
+            float maxDistance = m_followDistance * m_maxVisualOffsetMultiplier * parentRect.rect.width;
+            Vector2 clampedOffset = Vector2.ClampMagnitude(offset, maxDistance);
+
+            m_joystickHandle.anchoredPosition = clampedOffset;
         }
     }
 
@@ -174,8 +202,8 @@ public class VirtualJoystick : MonoBehaviour
     {
         if (m_uiVisuals != null)
         {
-            m_uiVisuals.SetActive(false);
+            //m_uiVisuals.SetActive(false);
+            m_joystickHandle.anchoredPosition = Vector2.zero;
         }
-
     }
 }

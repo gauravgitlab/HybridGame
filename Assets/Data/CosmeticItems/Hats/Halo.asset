@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37aa624a86f0244478f2dad809afe182, type: 3}
   m_Name: Halo
   m_EditorClassIdentifier: 
-  m_id: halo
+  m_cosmeticId: halo
   m_displayName: Halo
-  m_cosmeticCategory: 0
+  m_cosmeticCategory: hats
   m_cost: 40
   m_icon: {fileID: 21300000, guid: d02d0bcc8816343f7ad176589476c0fa, type: 3}

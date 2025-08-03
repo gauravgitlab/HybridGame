@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37aa624a86f0244478f2dad809afe182, type: 3}
   m_Name: Eyepatchbeard
   m_EditorClassIdentifier: 
-  m_id: eyepatchbeard
-  m_displayName: Eye Patched Beard
-  m_cosmeticCategory: 1
+  m_cosmeticId: eyepatchbeard
+  m_displayName: Eye Patch Beard
+  m_cosmeticCategory: beards
   m_cost: 15
   m_icon: {fileID: 21300000, guid: 6eeced6fbc0044c04a9d92f0c388e18e, type: 3}

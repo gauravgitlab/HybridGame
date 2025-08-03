@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37aa624a86f0244478f2dad809afe182, type: 3}
   m_Name: Longhair
   m_EditorClassIdentifier: 
-  m_id: longhair
+  m_cosmeticId: longhair
   m_displayName: Long Hair
-  m_cosmeticCategory: 0
+  m_cosmeticCategory: hats
   m_cost: 60
   m_icon: {fileID: 21300000, guid: a09488bda0c4b4e46a6da22580d280b4, type: 3}

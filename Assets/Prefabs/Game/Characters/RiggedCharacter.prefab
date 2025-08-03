@@ -5829,7 +5829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c8037ce6cef34141927a08a7eb211fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_cosmeticCategory: 0
+  m_cosmeticCategory: hats
 --- !u!1 &7777920025673788751
 GameObject:
   m_ObjectHideFlags: 0
@@ -5879,7 +5879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c8037ce6cef34141927a08a7eb211fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_cosmeticCategory: 1
+  m_cosmeticCategory: beards
 --- !u!1 &7846349381735551231
 GameObject:
   m_ObjectHideFlags: 0

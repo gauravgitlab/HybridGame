@@ -22,8 +22,10 @@ public class ShopScreen : MonoBehaviour
     [SerializeField] private Transform m_categoryItemsTransform;
     
     private List<CategoryTab> m_categoryTabs = new();
-    private Dictionary<CosmeticCategory, CosmeticItem> m_categoryItemsContainers;
-    private CosmeticCategory m_currentCategory;
+    
+    // key : category name, value : CosmeticItem containing the container GameObject and its cards
+    private Dictionary<string, CosmeticItem> m_categoryItemsContainers;
+    private string m_currentCosmeticCategory;
 
     private void Awake()
     {
@@ -41,7 +43,12 @@ public class ShopScreen : MonoBehaviour
     {
         PopulateCosmeticTabs();
         PopulateCosmeticItems();
-        EnableCategory(CosmeticCategory.Hats);
+        
+        if(m_categoryTabs.Count > 0)
+        {
+            // Set the first category as selected
+            EnableCategory(m_categoryTabs[0].m_cosmeticCategory);
+        }
     }
 
     private void PopulateCosmeticTabs()
@@ -70,7 +77,7 @@ public class ShopScreen : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        m_categoryItemsContainers = new Dictionary<CosmeticCategory, CosmeticItem>();
+        m_categoryItemsContainers = new Dictionary<string, CosmeticItem>();
         foreach (var category in CosmeticManager.Instance.CosmeticCategorizedItems.Keys)
         {
             var itemsContainerGameObject = Instantiate(m_cosmeticItemScrollViewPrefab, m_categoryItemsTransform);
@@ -96,34 +103,34 @@ public class ShopScreen : MonoBehaviour
         }
     }
 
-    private void EnableCategory(CosmeticCategory category, bool enable = true)
+    private void EnableCategory(string category, bool enable = true)
     {
         if (m_categoryItemsContainers.ContainsKey(category))
         {
             m_categoryItemsContainers[category].m_containerGameObject.SetActive(enable);
             if (enable)
             {
-                m_currentCategory = category;
+                m_currentCosmeticCategory = category;
             }
         }
         
         // Change tab color
-        m_categoryTabs.Find(c => c.m_category == category)?.
+        m_categoryTabs.Find(c => c.m_cosmeticCategory == category)?.
             ChangeTabColor(enable ? SelecteTabColor : NormalTabColor);
     }
 
-    private void SetCategory(CosmeticCategory category)
+    private void SetCategory(string cosmeticCategory)
     {
-        if(m_currentCategory == category)
+        if(m_currentCosmeticCategory == cosmeticCategory)
         {
             return; // Already selected
         }
         
-        EnableCategory(m_currentCategory, false);
-        EnableCategory(category);
+        EnableCategory(m_currentCosmeticCategory, false);
+        EnableCategory(cosmeticCategory);
     }
     
-    private void OnCosmeticPurchased(CosmeticCategory category, string cosmeticItemId)
+    private void OnCosmeticPurchased(string cosmeticCategory, string cosmeticId)
     {
         foreach (var itemCard in m_categoryItemsContainers.SelectMany(kvp => kvp.Value.m_cosmeticItemCards))
         {
@@ -131,12 +138,12 @@ public class ShopScreen : MonoBehaviour
         }
     }
     
-    private void OnCosmeticEquipped(CosmeticCategory category, string lastEquippedCosmeticId, string cosmeticItemId)
+    private void OnCosmeticEquipped(string cosmeticCategory, string lastEquippedCosmeticId, string cosmeticId)
     {
         // un-equip the last equipped cosmetic if it exists
         if (!string.IsNullOrEmpty(lastEquippedCosmeticId))
         {
-            CosmeticItemCard lastEquippedItemCard = m_categoryItemsContainers[category].m_cosmeticItemCards
+            CosmeticItemCard lastEquippedItemCard = m_categoryItemsContainers[cosmeticCategory].m_cosmeticItemCards
                 .FirstOrDefault(card => CustomUtils.CompareIDs(card.m_cosmeticId, lastEquippedCosmeticId));
             if(lastEquippedItemCard != null)
             {
@@ -145,8 +152,8 @@ public class ShopScreen : MonoBehaviour
         }
         
         // equip the new cosmetic item
-        CosmeticItemCard newEquippedItemCard = m_categoryItemsContainers[category].m_cosmeticItemCards
-            .FirstOrDefault(card => CustomUtils.CompareIDs(card.m_cosmeticId, cosmeticItemId));
+        CosmeticItemCard newEquippedItemCard = m_categoryItemsContainers[cosmeticCategory].m_cosmeticItemCards
+            .FirstOrDefault(card => CustomUtils.CompareIDs(card.m_cosmeticId, cosmeticId));
         if (newEquippedItemCard != null)
         {
             newEquippedItemCard.OnCosmeticEquip();

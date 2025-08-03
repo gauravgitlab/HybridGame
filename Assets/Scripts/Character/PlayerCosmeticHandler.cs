@@ -31,9 +31,9 @@ public class PlayerCosmeticHandler : MonoBehaviour
         ShopEvents.CosmeticEquipped -= OnCosmeticEquipped;
     }
 
-    private void OnCosmeticEquipped(CosmeticCategory cosmeticCategory, string lastEquippedCosmeticId, string cosmeticId)
+    private void OnCosmeticEquipped(string cosmeticCategory, string lastEquippedCosmeticId, string cosmeticId)
     {
-        var playerCosmetic = m_playerCosmetics.Find(pc => pc.m_cosmeticCategory == cosmeticCategory);
+        var playerCosmetic = m_playerCosmetics.Find(pc => CustomUtils.CompareIDs(pc.m_cosmeticCategory, cosmeticCategory));
         if (playerCosmetic != null)
         {
             playerCosmetic.EnableCosmetic(cosmeticId);

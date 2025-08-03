@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37aa624a86f0244478f2dad809afe182, type: 3}
   m_Name: Baseball
   m_EditorClassIdentifier: 
-  m_id: baseball
+  m_cosmeticId: baseball
   m_displayName: Baseball
-  m_cosmeticCategory: 0
+  m_cosmeticCategory: hats
   m_cost: 20
   m_icon: {fileID: 21300000, guid: 4d0f0dd4d0c0742b7854651617afd7f2, type: 3}
