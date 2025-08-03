@@ -3,7 +3,11 @@ using UnityEngine;
 
 public static class SaveSystem
 {
+#if UNITY_EDITOR
     private static readonly string BaseFolder = Path.Combine(Application.dataPath, "Progression");   
+#else
+    private static readonly string BaseFolder = Path.Combine(Application.persistentDataPath, "Progression");
+#endif 
     
     public static void Save<T>(T data, string fileName) where T : SaveDataBase
     {

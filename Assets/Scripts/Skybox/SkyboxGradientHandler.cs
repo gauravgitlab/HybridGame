@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SkyboxGradientManager : Singleton<SkyboxGradientManager>
+public class SkyboxGradientHandler : MonoBehaviour
 {
     [Header("Skybox Material (with SkyboxGradient shader)")]
     public Material m_skyboxMaterial;
