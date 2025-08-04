@@ -221,8 +221,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_categoryTabPrefab: {fileID: 441918506270038534, guid: 34b7052e86ce4bf4c8cef8fb6e548939, type: 3}
   m_categoryTabContainer: {fileID: 5847268913594421072}
-  NormalTabColor: {r: 0.5377358, g: 0.29662937, b: 0.083704166, a: 1}
-  SelecteTabColor: {r: 0.8396226, g: 0.43169275, b: 0.43169275, a: 1}
+  m_normalTabColor: {r: 0.5377358, g: 0.29662937, b: 0.083704166, a: 1}
+  m_selectedTabColor: {r: 0.8396226, g: 0.43169275, b: 0.43169275, a: 1}
   m_cosmeticItemScrollViewPrefab: {fileID: 4134471844102221172, guid: bac153d8ceddb2d469f74871246103ad, type: 3}
   m_categoryItemPrefab: {fileID: 8044606109730870527, guid: 7feab99c24afa024b963f7c68d64e02a, type: 3}
   m_categoryItemsTransform: {fileID: 4853508021641334672}

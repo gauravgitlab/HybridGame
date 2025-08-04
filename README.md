@@ -6,6 +6,7 @@ NOTES :
 ============================================================================================================
 - Using Unity 2022.3.55f1
 - Attempt all tasks ( Task 1, Task 2 and Task 3 (Bonus Tasks) )
+- I noticed that `GameBank` handled currency, but there wasn't a general-purpose saving mechanism for items or cosmetic progression or level progression. To avoid forcing flat key-based data into an unsuitable structure, I introduced a JSON-based save system scoped for player progression only, which may diverge from given game current save structure. If your existing `GameBank` is part of a broader saving strategy, I'd be happy to align the progression system to match it, I could’ve added something like `ProgressionBank` or `PlayerDataBank` class that follows given code style. I hope this is not breaking any Architectural consistency.
 
 ============================================================================================================
 Task 1 : New Mechanic, Shop
@@ -22,7 +23,7 @@ Utilized prefab-based structure (m_categoryTabPrefab, m_cosmeticItemScrollViewPr
 
 Event-Driven UI Updates:
 Subscribed to `ShopEvents.CosmeticPurchased` and `ShopEvents.CosmeticEquipped` to update the UI in response to runtime changes.
-Efficiently refreshes or toggles visual state of cosmetic item cards (e.g., updating equip state or refreshing unlock visuals).
+Efficiently refreshes or toggles visual state of cosmetic item cards (e.g., updating equip state or refreshing cost visuals).
 
 - Implemented Generic JSON Save System with Environment-Aware File Paths
 Script: `SaveSystem.cs`
@@ -30,6 +31,8 @@ Implemented a reusable save/load system that can serialize any game data type in
 One system can handle all game save needs (e.g., player progress, settings, cosmetic unlocks) without duplicate logic.
 In Editor: Uses `Application.dataPath + /Progression/`, so developers can inspect and validate JSON save files directly within the Unity project folder.
 In Build: Uses `Application.persistentDataPath`, ensuring platform-safe, sandboxed file access at runtime.
+
+NOTE : I noticed that `GameBank` handled currency, but there wasn't a general-purpose saving mechanism for items or cosmetic progression or level progression. To avoid forcing flat key-based data into an unsuitable structure, I introduced a JSON-based save system scoped for player progression only, which may diverge from given game current save structure. If your existing `GameBank` is part of a broader saving strategy, I'd be happy to align the progression system to match it, I could’ve added something like `ProgressionBank` or `PlayerDataBank` class that follows given code style. I hope this is not breaking any Architectural consistency.
 
 ============================================================================================================
 Task 2 : Improve the game feel

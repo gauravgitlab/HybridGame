@@ -1,14 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class CategoryTab : MonoBehaviour
 {
     [SerializeField] private Text m_tabText;
     [SerializeField] private Button m_tabButton;
-
-    [FormerlySerializedAs("m_category")] public string m_cosmeticCategory;
+    public string m_cosmeticCategory { get; private set; }
     
     public void SetTab(string cosmeticCategory, UnityAction<string> onClickCallback)
     {

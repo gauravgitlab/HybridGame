@@ -105,7 +105,8 @@ public class PlayerProgressionData : SaveDataBase, ICustomSerializable
     
     public bool IsCosmeticPurchased(string cosmeticCategory, string cosmeticId)
     {
-        return m_purchasedCosmetics.ContainsKey(cosmeticCategory) && m_purchasedCosmetics[cosmeticCategory].Contains(cosmeticId);
+        return m_purchasedCosmetics.ContainsKey(cosmeticCategory) && 
+               m_purchasedCosmetics[cosmeticCategory].Contains(cosmeticId);
     }
     
     public bool IsCosmeticEquipped(string cosmeticCategory, string cosmeticId)

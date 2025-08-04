@@ -22,7 +22,10 @@ public class PlayerCosmeticHandler : MonoBehaviour
             
             var equippedCosmeticId = GameManager.Instance.m_playerProgressionData.
                 GetCurrentEquippedCosmetic(characterCosmetic.m_cosmeticCategory);
-            characterCosmetic.EnableCosmetic(equippedCosmeticId);
+            if (!string.IsNullOrEmpty(equippedCosmeticId))
+            {
+                characterCosmetic.EnableCosmetic(equippedCosmeticId);    
+            }
         }
     }
 
@@ -33,7 +36,7 @@ public class PlayerCosmeticHandler : MonoBehaviour
 
     private void OnCosmeticEquipped(string cosmeticCategory, string lastEquippedCosmeticId, string cosmeticId)
     {
-        var playerCosmetic = m_playerCosmetics.Find(pc => CustomUtils.CompareIDs(pc.m_cosmeticCategory, cosmeticCategory));
+        CharacterCosmetic playerCosmetic = m_playerCosmetics.Find(pc => CustomUtils.CompareIDs(pc.m_cosmeticCategory, cosmeticCategory));
         if (playerCosmetic != null)
         {
             playerCosmetic.EnableCosmetic(cosmeticId);

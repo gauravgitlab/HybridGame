@@ -13,8 +13,8 @@ public class ShopScreen : MonoBehaviour
     [Header("Cosmetic Container Tabs")]
     [SerializeField] private GameObject m_categoryTabPrefab;
     [SerializeField] private Transform m_categoryTabContainer;
-    [SerializeField] private Color NormalTabColor;
-    [SerializeField] private Color SelecteTabColor;
+    [SerializeField] private Color m_normalTabColor;
+    [SerializeField] private Color m_selectedTabColor;
 
     [Header("Cosmetic Items")] 
     [SerializeField] private GameObject m_cosmeticItemScrollViewPrefab;
@@ -48,6 +48,7 @@ public class ShopScreen : MonoBehaviour
         {
             // Set the first category as selected
             EnableCosmeticCategory(m_categoryTabs[0].m_cosmeticCategory);
+            SetCurrentCosmeticCategory(m_categoryTabs[0].m_cosmeticCategory);
         }
     }
 
@@ -64,7 +65,7 @@ public class ShopScreen : MonoBehaviour
             var tab = Instantiate(m_categoryTabPrefab, m_categoryTabContainer);
             var categoryTab = tab.GetComponent<CategoryTab>();
             categoryTab.SetTab(category, SetCategory);
-            categoryTab.ChangeTabColor(NormalTabColor);
+            categoryTab.ChangeTabColor(m_normalTabColor);
             
             m_categoryTabs.Add(categoryTab);
         }
@@ -108,15 +109,11 @@ public class ShopScreen : MonoBehaviour
         if (m_categoryItemsContainers.ContainsKey(cosmeticCategory))
         {
             m_categoryItemsContainers[cosmeticCategory].m_containerGameObject.SetActive(enable);
-            if (enable)
-            {
-                m_currentCosmeticCategory = cosmeticCategory;
-            }
         }
         
         // Change tab color
         m_categoryTabs.Find(c => CustomUtils.CompareIDs(c.m_cosmeticCategory, cosmeticCategory)) ?.
-            ChangeTabColor(enable ? SelecteTabColor : NormalTabColor);
+            ChangeTabColor(enable ? m_selectedTabColor : m_normalTabColor);
     }
 
     private void SetCategory(string cosmeticCategory)
@@ -128,6 +125,7 @@ public class ShopScreen : MonoBehaviour
         
         EnableCosmeticCategory(m_currentCosmeticCategory, false);
         EnableCosmeticCategory(cosmeticCategory);
+        SetCurrentCosmeticCategory(cosmeticCategory);
     }
     
     private void OnCosmeticPurchased(string cosmeticCategory, string cosmeticId)
@@ -158,6 +156,19 @@ public class ShopScreen : MonoBehaviour
         {
             newEquippedItemCard.OnCosmeticEquip();
         }
+    }
+    
+    private void SetCurrentCosmeticCategory(string cosmeticCategory)
+    {
+        if (string.IsNullOrEmpty(cosmeticCategory))
+            return;
+        
+        if (CustomUtils.CompareIDs(m_currentCosmeticCategory, cosmeticCategory))
+        {
+            return; // Already set
+        }
+        
+        m_currentCosmeticCategory = cosmeticCategory;
     }
 
     public void OnDonePressed()

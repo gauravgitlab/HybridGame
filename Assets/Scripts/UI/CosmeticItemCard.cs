@@ -14,7 +14,7 @@ public class CosmeticItemCard : MonoBehaviour
     private int m_cosmeticCost = 0;
     private string m_cosmeticCategory;
     
-    public string m_cosmeticId;
+    public string m_cosmeticId { get; private set; }
     
     public void SetItemCard(CosmeticItemScriptable cosmeticItem)
     {
