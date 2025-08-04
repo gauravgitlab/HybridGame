@@ -6,10 +6,8 @@ public class CosmeticManager : Singleton<CosmeticManager>
     [SerializeField]
     private CosmeticDatabaseScriptable m_cosmeticDatabase;
     
-    private Dictionary<string, List<CosmeticItemScriptable>> m_cosmeticCategorizedItems;
+    public Dictionary<string, List<CosmeticItemScriptable>> m_cosmeticCategorizedItems { get; private set; }
     
-    public IReadOnlyDictionary<string, List<CosmeticItemScriptable>> CosmeticCategorizedItems => m_cosmeticCategorizedItems;
-
     private void Awake()
     {
         LoadAndGroupCosmeticItems();

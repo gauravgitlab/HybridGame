@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
     private int m_currentLevel = 0;
     private Transform m_playerObject;
 
-    public PlayerProgressionData m_playerProgressionData;
+    public PlayerProgressionData m_playerProgressionData { get; private set; }
 
     protected override void Init()
     {

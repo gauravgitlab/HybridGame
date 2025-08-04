@@ -156,21 +156,16 @@ public class VirtualJoystick : MonoBehaviour
             
             if (m_moving)
             {
-                Vector2 cappedInput = Vector2.ClampMagnitude
-                    (new Vector2(offset.x, offset.y), m_followDistance) * m_factor;
-                m_controllable.ControlChanged(cappedInput);
+                if (magnitude > m_followDistance)
+                {
+                    Vector3 normalizedOffset = offset.normalized;
+                    offset = normalizedOffset * m_followDistance;
+                    m_initialMousePress = Input.mousePosition - 
+                                          (normalizedOffset * m_followDistance * Screen.width);
+                }
                 
-                // if (magnitude > m_followDistance)
-                // {
-                //     Vector3 normalizedOffset = offset.normalized;
-                //     offset = normalizedOffset * m_followDistance;
-                //     m_initialMousePress = Input.mousePosition - 
-                //                           (normalizedOffset * m_followDistance * Screen.width);
-                // }
-                //
-                // Vector3 factorizedOffset = offset * m_factor;
-                // m_controllable.ControlChanged(new Vector2(factorizedOffset.x, factorizedOffset.y));
-                
+                Vector3 factorizedOffset = offset * m_factor;
+                m_controllable.ControlChanged(new Vector2(factorizedOffset.x, factorizedOffset.y));
                 UIVisualSet();
             }
         }

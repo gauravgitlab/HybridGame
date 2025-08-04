@@ -47,7 +47,7 @@ public class ShopScreen : MonoBehaviour
         if(m_categoryTabs.Count > 0)
         {
             // Set the first category as selected
-            EnableCategory(m_categoryTabs[0].m_cosmeticCategory);
+            EnableCosmeticCategory(m_categoryTabs[0].m_cosmeticCategory);
         }
     }
 
@@ -59,7 +59,7 @@ public class ShopScreen : MonoBehaviour
         }
         
         m_categoryTabs.Clear();
-        foreach (var category in CosmeticManager.Instance.CosmeticCategorizedItems.Keys)
+        foreach (var category in CosmeticManager.Instance.m_cosmeticCategorizedItems.Keys)
         {
             var tab = Instantiate(m_categoryTabPrefab, m_categoryTabContainer);
             var categoryTab = tab.GetComponent<CategoryTab>();
@@ -78,7 +78,7 @@ public class ShopScreen : MonoBehaviour
         }
 
         m_categoryItemsContainers = new Dictionary<string, CosmeticItem>();
-        foreach (var category in CosmeticManager.Instance.CosmeticCategorizedItems.Keys)
+        foreach (var category in CosmeticManager.Instance.m_cosmeticCategorizedItems.Keys)
         {
             var itemsContainerGameObject = Instantiate(m_cosmeticItemScrollViewPrefab, m_categoryItemsTransform);
             var itemsContainer = itemsContainerGameObject.GetComponent<CategoryItemsContainer>();
@@ -103,19 +103,19 @@ public class ShopScreen : MonoBehaviour
         }
     }
 
-    private void EnableCategory(string category, bool enable = true)
+    private void EnableCosmeticCategory(string cosmeticCategory, bool enable = true)
     {
-        if (m_categoryItemsContainers.ContainsKey(category))
+        if (m_categoryItemsContainers.ContainsKey(cosmeticCategory))
         {
-            m_categoryItemsContainers[category].m_containerGameObject.SetActive(enable);
+            m_categoryItemsContainers[cosmeticCategory].m_containerGameObject.SetActive(enable);
             if (enable)
             {
-                m_currentCosmeticCategory = category;
+                m_currentCosmeticCategory = cosmeticCategory;
             }
         }
         
         // Change tab color
-        m_categoryTabs.Find(c => c.m_cosmeticCategory == category)?.
+        m_categoryTabs.Find(c => CustomUtils.CompareIDs(c.m_cosmeticCategory, cosmeticCategory)) ?.
             ChangeTabColor(enable ? SelecteTabColor : NormalTabColor);
     }
 
@@ -126,8 +126,8 @@ public class ShopScreen : MonoBehaviour
             return; // Already selected
         }
         
-        EnableCategory(m_currentCosmeticCategory, false);
-        EnableCategory(cosmeticCategory);
+        EnableCosmeticCategory(m_currentCosmeticCategory, false);
+        EnableCosmeticCategory(cosmeticCategory);
     }
     
     private void OnCosmeticPurchased(string cosmeticCategory, string cosmeticId)
